@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id "application"
+}
+
+group 'test-schedules'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // OptaPlanner
+    def optaplannerVersion = "8.33.0.Final"
+    implementation "org.optaplanner:optaplanner-core:$optaplannerVersion"
+    testImplementation "org.optaplanner:optaplanner-test:$optaplannerVersion"
+
+    // Logging
+    runtimeOnly 'ch.qos.logback:logback-classic:1.2.3'
+}
+
+ext {
+   javaMainClass = "testschedules.Main"
+}
+
+application {
+    mainClassName = javaMainClass
+}

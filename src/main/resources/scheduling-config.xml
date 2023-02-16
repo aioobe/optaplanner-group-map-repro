@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd">
+
+    <!-- Define the model -->
+    <solutionClass>testschedules.Schedule</solutionClass>
+    <entityClass>testschedules.Lecture</entityClass>
+
+    <!-- Define the score function -->
+    <scoreDirectorFactory>
+        <constraintProviderClass>testschedules.SchedulingConstraintProvider</constraintProviderClass>
+        <constraintStreamImplType>BAVET</constraintStreamImplType>
+    </scoreDirectorFactory>
+
+    <localSearch>
+        <termination>
+            <secondsSpentLimit>30</secondsSpentLimit>
+            <bestScoreLimit>0hard/0soft</bestScoreLimit>
+        </termination>
+
+        <acceptor>
+            <entityTabuSize>7</entityTabuSize>
+        </acceptor>
+
+        <forager>
+            <acceptedCountLimit>1000</acceptedCountLimit>
+        </forager>
+    </localSearch>
+
+</solver>
